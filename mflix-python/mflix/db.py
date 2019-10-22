@@ -301,7 +301,7 @@ def get_movie(id):
 
     # TODO: Error Handling
     # If an invalid ID is passed to `get_movie`, it should return None.
-    except (StopIteration) as _:
+    except (StopIteration, InvalidId) as _:
 
         """
         Ticket: Error Handling
@@ -314,7 +314,7 @@ def get_movie(id):
         return None
 
     except Exception as e:
-        return {}
+        return {'error': e}
 
 
 def get_all_genres():
@@ -550,7 +550,7 @@ def update_prefs(email, prefs):
         else:
             return response
     except Exception as e:
-        return {'error': str(e)}
+        return {'error': e}
 
 
 def most_active_commenters():
